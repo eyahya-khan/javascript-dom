@@ -7,7 +7,7 @@ add_todo_btn.addEventListener('click', function () {
     var todo = todo_input.value; //take input...
         if (todo === '') {
         alert("You must write something!");
-      }
+      }else{
     
     
     var item = document.createElement('DIV'); //new div
@@ -99,4 +99,5 @@ add_todo_btn.addEventListener('click', function () {
    
 
     todo_input.value = '';//empty input text
+      }
 });
