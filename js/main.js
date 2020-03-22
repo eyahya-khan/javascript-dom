@@ -1,66 +1,64 @@
-var add_todo_btn = document.getElementById('add-btn'); //assign button
-var todo_input = document.getElementById('todo-input'); //assign input text
-var list = document.getElementById('list'); //assign div list
-var listFärdiga = document.getElementById('listFärdiga'); //assign div list
+let add_todo_btn = document.getElementById('add-btn'); //assign button
+let todo_input = document.getElementById('todo-input'); //assign input text
+let list = document.getElementById('list'); //assign div list
+let listFärdiga = document.getElementById('listFärdiga'); //assign div list
 
 add_todo_btn.addEventListener('click', function () {
-    var todo = todo_input.value; //take input...
+    let todo = todo_input.value; //take input...
     if (todo === '') {
-        alert("You must write something!");
+        alert("You must write what you want to add!");
     } else {
 
-        var item = document.createElement('DIV'); //new div
-        item.classList.add('item'); //<div class="item"></div>
+        let gora_btn = document.createElement('DIV');
+        gora_btn.classList.add('gora-btn');
+//        gora_btn.textContent = 'Att Göra';
 
-        var item_text = document.createElement('DIV');
+        let fardig_btn = document.createElement('DIV');
+        fardig_btn.classList.add('fardig-btn');
+
+        //add li
+        let li = document.createElement("LI"); //create li
+        li.classList.add('li-btn');
+
+
+
+        let item_text = document.createElement('INPUT');
         item_text.classList.add('item-text'); //<div class="item-text"></div>
-        item_text.textContent = todo; //assign value of div i,e todo_input.value
+        item_text.value = todo; //assign value of div i,e todo_input.value
         //output: <div class="item-text">todo</div>
 
 
-        var edit_input = document.createElement('INPUT');
+        let edit_input = document.createElement('INPUT');
         edit_input.classList.add('edit-input');
-        edit_input.classList.add('hide');
         edit_input.name = 'edit-input'; // input name="edit-input"
         edit_input.type = 'text'; // input type="text"
         edit_input.value = todo; //assign value of text input i,e todo_input.value
         //output: <input class="edit-input hide" name="edit_input" type="text" value=todo>
 
-        //add li
-        var node = document.createElement("li"); //create li
-        node.classList.add('li-btn');
-        node.appendChild(edit_input); //merge li with input value
-        list.appendChild(node); //merge with parent div
 
-
-        var edit_input_btn = document.createElement('BUTTON');
-        edit_input_btn.classList.add('action-btn');
-        edit_input_btn.classList.add('update-btn');
-        edit_input_btn.type = 'button';
-        edit_input_btn.textContent = 'Ändra';
+        let ändra_btn = document.createElement('BUTTON');
+        ändra_btn.classList.add('action-btn');
+        ändra_btn.classList.add('update-btn');
+        ändra_btn.type = 'button';
+        ändra_btn.textContent = 'Ändra';
         //output: <button class="action-btn update-btn" type="button">Ändra</button>
 
-        edit_input_btn.addEventListener('click', myFunction);
+        ändra_btn.addEventListener('click', myFunction);
 
         function myFunction() {
-            if (edit_input.value === '') {
+            if (edit_input.value === item_text.value) {
                 edit_input.disabled = false;
-                edit_input.style.backgroundColor = 'aliceblue';
+                edit_input.style.backgroundColor = '#6faade';
             } else {
-                item_text.textContent = edit_input.value;
+                item_text.value = edit_input.value;
                 edit_input.disabled = true;
-                edit_input.value = '';
                 edit_input.style.backgroundColor = 'white';
-
             }
         }
 
 
 
-        var action_btns = document.createElement('DIV');
-        action_btns.classList.add('action-btns');
-
-        var edit_btn = document.createElement('BUTTON');
+        let edit_btn = document.createElement('BUTTON');
         edit_btn.classList.add('action-btn');
         edit_btn.classList.add('edit-btn');
         edit_btn.textContent = 'Färdig';
@@ -69,14 +67,14 @@ add_todo_btn.addEventListener('click', function () {
         edit_btn.addEventListener('click', function () {
 
             edit_btn.remove();
-            listFärdiga.appendChild(node);
-            listFärdiga.appendChild(item_text);
-            listFärdiga.appendChild(edit_input);
-            listFärdiga.appendChild(edit_input_btn);
-            listFärdiga.appendChild(remove_btn);
+            
+            fardig_btn.appendChild(li);
+            fardig_btn.appendChild(edit_input);
+            fardig_btn.appendChild(ändra_btn);
+            fardig_btn.appendChild(remove_btn);
+            
+            listFärdiga.appendChild(fardig_btn);
         });
-
-
 
 
         var remove_btn = document.createElement('BUTTON');
@@ -85,22 +83,20 @@ add_todo_btn.addEventListener('click', function () {
         remove_btn.textContent = 'Radera';
 
         remove_btn.addEventListener('click', function () {
-            item.parentNode.removeChild(item); //remove all item from div
-            list.removeChild(node); //remove li
+            gora_btn.parentNode.removeChild(gora_btn); //remove all item from div
+            fardig_btn.parentNode.removeChild(fardig_btn); //remove all item from div
         });
-
-
+        
+        edit_input.disabled = true;
         //merge all items
-        action_btns.appendChild(node);
-        action_btns.appendChild(item_text);
-        action_btns.appendChild(edit_input);
-        action_btns.appendChild(edit_input_btn);
-        action_btns.appendChild(edit_btn);
-        action_btns.appendChild(remove_btn);
+        gora_btn.appendChild(li);
+        gora_btn.appendChild(edit_input);
+        gora_btn.appendChild(ändra_btn);
+        gora_btn.appendChild(edit_btn);
+        gora_btn.appendChild(remove_btn);
 
+        list.appendChild(gora_btn);
 
-        item.appendChild(action_btns);
-        list.appendChild(item);
 
 
         todo_input.value = ''; //empty input text
