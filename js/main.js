@@ -11,7 +11,7 @@ add_todo_btn.addEventListener('click', function () {
 
         let gora_btn = document.createElement('DIV');
         gora_btn.classList.add('gora-btn');
-//        gora_btn.textContent = 'Att Göra';
+        //        gora_btn.textContent = 'Att Göra';
 
         let fardig_btn = document.createElement('DIV');
         fardig_btn.classList.add('fardig-btn');
@@ -46,13 +46,17 @@ add_todo_btn.addEventListener('click', function () {
         ändra_btn.addEventListener('click', myFunction);
 
         function myFunction() {
-            if (edit_input.value === item_text.value) {
-                edit_input.disabled = false;
-                edit_input.style.backgroundColor = '#6faade';
+            if (edit_input.value === '') {
+                alert("You can not leave empty.");
             } else {
-                item_text.value = edit_input.value;
-                edit_input.disabled = true;
-                edit_input.style.backgroundColor = 'white';
+                if (edit_input.value === item_text.value) {
+                    edit_input.disabled = false;
+                    edit_input.style.backgroundColor = '#6faade';
+                } else {
+                    item_text.value = edit_input.value;
+                    edit_input.disabled = true;
+                    edit_input.style.backgroundColor = 'white';
+                }
             }
         }
 
@@ -67,12 +71,12 @@ add_todo_btn.addEventListener('click', function () {
         edit_btn.addEventListener('click', function () {
 
             edit_btn.remove();
-            
+
             fardig_btn.appendChild(li);
             fardig_btn.appendChild(edit_input);
             fardig_btn.appendChild(ändra_btn);
             fardig_btn.appendChild(remove_btn);
-            
+
             listFärdiga.appendChild(fardig_btn);
         });
 
@@ -86,7 +90,7 @@ add_todo_btn.addEventListener('click', function () {
             gora_btn.parentNode.removeChild(gora_btn); //remove all item from div
             fardig_btn.parentNode.removeChild(fardig_btn); //remove all item from div
         });
-        
+
         edit_input.disabled = true;
         //merge all items
         gora_btn.appendChild(li);
