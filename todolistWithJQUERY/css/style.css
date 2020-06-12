@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container-fluid {
+    display: flex;
+    justify-content: center;
+}
+
+.row {
+    width: 65%;
+    text-align: center;
+    background-color: #030303;
+}
+
+.todo {
+    color: #ffffff;
+    margin-top: 10px;
+    font-size: 24px;
+}
+
+.input {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+
+    margin-top: 20px;
+}
+
+.input-element {
+    font-size: 16px;
+    border: 1px solid #000;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #f0f8ff;
+    color: #000000;
+}
+
+.input-btn {
+    background-color: #f0f8ff;
+    font-size: 16px;
+    margin-left: 5px;
+    border-radius: 10px;
+}
+.toggle-btn {
+    background-color: #f0f8ff;
+    font-size: 12px;
+    border-radius: 10px;
+    width: 90px;
+}
+
+#listFardiga,
+#listGora {
+    font-size: 20px;
+    color: #ffffff;
+}
+
+.li-btn {
+    float: left;
+    width: 1px;
+    margin-top: 2px;
+}
+
+.edit-input,
+.action-btn {
+    height: 30px;
+    margin-top: 5px;
+    border: 1px solid #000;
+
+    text-align: center;
+    font-size: 16px;
+}
+
+.action-btn {
+    width: 15%;
+    border-radius: 7px;
+}
+
+.edit-input {
+    width: 40%;
+    margin-left: -10px;
+}
+
+.update-btn {
+    background-color: #7fffd4;
+}
+
+.edit-btn {
+    background-color: #eaad5d;
+}
+
+.remove-btn {
+    background-color: #f44949;
+}
+
+.fardig-btn {
+    margin-bottom: 10px;
+}
+
+em{
+    font-size: 10px;
+}

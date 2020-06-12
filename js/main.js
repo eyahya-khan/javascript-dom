@@ -11,7 +11,7 @@ add_todo_btn.addEventListener('click', function () {
 
         let gora_btn = document.createElement('DIV');
         gora_btn.classList.add('gora-btn');
-        //        gora_btn.textContent = 'Att Göra';
+        
 
         let fardig_btn = document.createElement('DIV');
         fardig_btn.classList.add('fardig-btn');
@@ -20,13 +20,10 @@ add_todo_btn.addEventListener('click', function () {
         let li = document.createElement("LI"); //create li
         li.classList.add('li-btn');
 
-
-
         let item_text = document.createElement('INPUT');
         item_text.classList.add('item-text'); //<div class="item-text"></div>
         item_text.value = todo; //assign value of div i,e todo_input.value
         //output: <div class="item-text">todo</div>
-
 
         let edit_input = document.createElement('INPUT');
         edit_input.classList.add('edit-input');
@@ -34,7 +31,6 @@ add_todo_btn.addEventListener('click', function () {
         edit_input.type = 'text'; // input type="text"
         edit_input.value = todo; //assign value of text input i,e todo_input.value
         //output: <input class="edit-input hide" name="edit_input" type="text" value=todo>
-
 
         let ändra_btn = document.createElement('BUTTON');
         ändra_btn.classList.add('action-btn');
@@ -47,7 +43,9 @@ add_todo_btn.addEventListener('click', function () {
 
         function myFunction() {
             if (edit_input.value === '') {
-                alert("You can not leave empty.");
+                alert("You can not leave empty and must change the value!");
+                edit_input.value = item_text.value;
+
             } else {
                 if (edit_input.value === item_text.value) {
                     edit_input.disabled = false;
@@ -59,8 +57,6 @@ add_todo_btn.addEventListener('click', function () {
                 }
             }
         }
-
-
 
         let edit_btn = document.createElement('BUTTON');
         edit_btn.classList.add('action-btn');
@@ -79,7 +75,6 @@ add_todo_btn.addEventListener('click', function () {
 
             listFärdiga.appendChild(fardig_btn);
         });
-
 
         var remove_btn = document.createElement('BUTTON');
         remove_btn.classList.add('action-btn');
@@ -100,8 +95,6 @@ add_todo_btn.addEventListener('click', function () {
         gora_btn.appendChild(remove_btn);
 
         list.appendChild(gora_btn);
-
-
 
         todo_input.value = ''; //empty input text
     }
